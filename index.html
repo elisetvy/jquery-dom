@@ -83,10 +83,24 @@
 
     // Step 3
     const randomTitleSize = `${Math.floor(Math.random() * 101)}px`;
-    $('#title').css({ "fontSize": randomTitleSize});
+    $('#title').css({ "fontSize": randomTitleSize });
 
     // Step 4
     $("ol").append($("<li>New List Item</li>"));
+
+    // Step 5
+    $("aside").empty().append($('<p>Sorry about list :(</p>'));
+
+    // Step 6
+    $('input').on('change', function () {
+      let red = $('input').get(0).value;
+      let blue = $('input').get(1).value;
+      let green = $('input').get(2).value;
+
+      let rgb = `rgb(${red}, ${green}, ${blue})`;
+
+      $('body').css({ "backgroundColor": rgb });
+    })
   </script>
 </body>
 
