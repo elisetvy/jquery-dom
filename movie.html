@@ -1,31 +1,40 @@
 <html>
-  <body>
+
+<body>
   <script src="https://unpkg.com/jquery"></script>
   <script>
-// code goes here
+    // code goes here
 
- //Build an application that uses jQuery to do the following:
+    //Build an application that uses jQuery to do the following:
 
-  //- Contains a form with two inputs for a title and rating along with a button
-  //- to submit the form.
+    //- Contains a form with two inputs for a title and rating along with a button
+    //- to submit the form.
     const form = $("<form>");
-    form.append("Title")
-    form.append("<input type = 'text'>");
-    form.append("Rating");
-    form.append("<input type = 'text'>");
-    form.append("<button>Submit</button>")
+    form.append("<input type = 'text'>Title</input>");
+    form.append("<input type = 'text'>Rating</input>");
+    form.append("<button type='submit'>Submit</button>");
 
 
 
-  $("body").append(form)
+    $("body").append(form);
 
 
-//When the form has is submitted, capture the values for each of the inputs and append them do the DOM along with a button to remove each title and rating from the DOM.
-//When the button to remove is clicked, remove each title and rating from the DOM.
+    //When the form has is submitted, capture the values for each of the inputs and append them do the DOM along with a button to remove each title and rating from the DOM.
+    //When the button to remove is clicked, remove each title and rating from the DOM.
 
+    form.on('submit', (event) => {
+      event.preventDefault();
 
+      const title = $('input').eq(0).val();
+      const rating = $('input').eq(1).val();
+
+      const movie = $("<div>").append(title, " ", rating);
+
+      $('body').append(movie);
+    })
 
   </script>
 
 </body>
+
 </html>
