@@ -5,10 +5,6 @@
   <script>
     // code goes here
 
-    //Build an application that uses jQuery to do the following:
-
-    //- Contains a form with two inputs for a title and rating along with a button
-    //- to submit the form.
     const form = $("<form>");
     form.append("<input type = 'text'>Title</input>");
     form.append("<input type = 'text'>Rating</input>");
@@ -17,10 +13,6 @@
 
 
     $("body").append(form);
-
-
-    //When the form has is submitted, capture the values for each of the inputs and append them do the DOM along with a button to remove each title and rating from the DOM.
-    //When the button to remove is clicked, remove each title and rating from the DOM.
 
     form.on('submit', (event) => {
       event.preventDefault();
@@ -33,10 +25,28 @@
         event.target.parentElement.remove();
       });
 
-      const movie = $("<div>").append(title, " ", rating, " ", removeButton);
+      filterRatingsAndTitleLength(rating,title);
+
+      const movie = $("<div>").attr("class","movie").attr("data-title",title).append(title, " ", rating, " ", removeButton);
 
       $('body').append(movie);
     })
+
+    // filters out ratings that are not between 0 - 10
+    function filterRatingsAndTitleLength(rating,title) {
+      if(rating < 0 || rating > 10 || title.length < 2){
+        alert("Title must have atleast 2 characters, and rating must be between 0 - 0");
+        throw new Error ("Title must have atleast 2 characters, and rating must be between 0 - 10");
+
+      }
+      else return;
+
+      }
+
+    // function sortAlpha() {
+    //   const movies = $(".movie").sort;
+
+    // }
 
   </script>
 
