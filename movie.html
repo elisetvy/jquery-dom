@@ -27,8 +27,13 @@
 
       const title = $('input').eq(0).val();
       const rating = $('input').eq(1).val();
+      const removeButton = $("<button>Remove</button>");
 
-      const movie = $("<div>").append(title, " ", rating);
+      removeButton.on('click', (event) => {
+        event.target.parentElement.remove();
+      });
+
+      const movie = $("<div>").append(title, " ", rating, " ", removeButton);
 
       $('body').append(movie);
     })
