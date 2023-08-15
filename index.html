@@ -79,10 +79,11 @@
     $("article img").addClass('image-center');
 
     // Step 2
-    $("article p").get(5).remove();
+    $("article p").last().remove();
 
     // Step 3
-    const randomTitleSize = `${Math.floor(Math.random() * 101)}px`;
+    const upperPixelBound = 101;
+    const randomTitleSize = `${Math.floor(Math.random() * upperPixelBound)}px`;
     $('#title').css({ "fontSize": randomTitleSize });
 
     // Step 4
@@ -93,13 +94,19 @@
 
     // Step 6
     $('input').on('change', function () {
-      let red = $('input').get(0).value;
-      let blue = $('input').get(1).value;
-      let green = $('input').get(2).value;
+      const red = $('input').eq(0).val();
+      const blue = $('input').eq(1).val();
+      const green = $('input').eq(2).val();
 
-      let rgb = `rgb(${red}, ${green}, ${blue})`;
+      const rgb = `rgb(${red}, ${green}, ${blue})`;
 
       $('body').css({ "backgroundColor": rgb });
+
+    });
+
+    // Step 7
+    $("img").on("click", (evt) => {
+      evt.target.remove();
     })
   </script>
 </body>
